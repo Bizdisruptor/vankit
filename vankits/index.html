@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Van Kits - Bolt-On Gear, Built and Ridden</title>
+<meta name="description" content="Bolt-on kits for adventure vans. Designed, simulated, and documented by a builder who rides. Cut lists and templates, no guesswork.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #0a0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  a { text-decoration: none; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 20px 70px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(0,149,255,0.12), transparent 60%),
+      #0a0f1a;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+  .hero h1 .accent { color: #0095FF; }
+  .hero-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.9);
+    max-width: 640px;
+    margin: 0 auto 18px;
+    font-weight: 400;
+  }
+  .hero-note {
+    font-size: 1.05rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .intro {
+    text-align: center;
+    padding: 50px 20px 10px;
+  }
+  .intro p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.85);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .intro strong { color: #fff; }
+
+  .products { padding: 40px 0 30px; }
+  .products h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .products .sub {
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .card.live:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,149,255,0.5);
+    box-shadow: 0 8px 30px rgba(0,149,255,0.15);
+  }
+  .thumb {
+    height: 180px;
+    background: #070b14;
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .thumb svg { width: 100%; height: 100%; display: block; }
+  .card-body { padding: 28px 24px; display: flex; flex-direction: column; flex: 1; }
+  .badge {
+    display: inline-block;
+    font-size: 0.8rem; letter-spacing: 0.5px; font-weight: 600;
+    padding: 5px 12px; border-radius: 50px;
+    margin-bottom: 16px; width: fit-content;
+  }
+  .badge.ready { background: rgba(0,149,255,0.15); color: #33aaff; }
+  .badge.soon { background: rgba(255,255,255,0.07); color: #888; }
+  .card h3 { color: #fff; font-size: 1.4rem; margin-bottom: 12px; font-weight: 600; }
+  .card p { color: rgba(255,255,255,0.8); font-size: 1.05rem; flex: 1; margin-bottom: 22px; }
+  .cta-button {
+    display: block; text-align: center;
+    background: #0095FF; color: #fff;
+    padding: 14px 24px; border-radius: 50px;
+    font-size: 1.05rem; font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,149,255,0.3);
+  }
+  .cta-button:hover { transform: scale(1.03); box-shadow: 0 6px 30px rgba(0,149,255,0.5); }
+  .cta-button.disabled {
+    background: rgba(255,255,255,0.06); color: #666;
+    box-shadow: none; cursor: not-allowed; pointer-events: none;
+  }
+
+  .closing {
+    text-align: center;
+    padding: 60px 20px 50px;
+  }
+  .closing h2 { color: #fff; font-size: 1.9rem; margin-bottom: 14px; }
+  .closing p { color: #aaa; font-size: 1.15rem; margin-bottom: 28px; }
+
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 36px 20px;
+    text-align: center;
+    color: #888;
+    font-size: 0.95rem;
+  }
+  footer a { color: #0095FF; font-weight: 500; }
+  footer .links { margin-top: 8px; }
+  footer .links a { margin: 0 8px; color: #aaa; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .hero h1 { font-size: 2.1rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .hero { padding: 64px 20px 50px; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Bolt-on gear, <span class="accent">built and ridden</span>.</h1>
+    <p class="hero-subtitle">Kits for the adventure van, designed by a builder who actually rides.</p>
+    <p class="hero-note">Every kit ships with a real cut list, templates, and an interactive simulator so you can see exactly how it works before you build it.</p>
+  </section>
+
+  <section class="intro wrap">
+    <p>&#128075; <strong>I built these for my own van.</strong> After years of converting a Ford Transit and riding e-bikes off the back of it, I got tired of gear that did not fit, did not hold up, or did not exist. So I engineered my own. These are those builds, documented so you can make them too.</p>
+  </section>
+
+  <section class="products wrap">
+    <h2>The Kits</h2>
+    <p class="sub">Play with the geometry before you commit a single bolt.</p>
+
+    <div class="grid">
+
+      <div class="card live">
+        <div class="thumb">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="180" fill="#070b14"/>
+            <line x1="42" y1="24" x2="42" y2="158" stroke="#2c3e50" stroke-width="7"/>
+            <line x1="42" y1="64" x2="124" y2="44" stroke="#9aa6b2" stroke-width="5"/>
+            <line x1="42" y1="74" x2="124" y2="54" stroke="#9aa6b2" stroke-width="5"/>
+            <circle cx="134" cy="58" r="15" fill="none" stroke="#0095FF" stroke-width="4"/>
+            <circle cx="150" cy="128" r="19" fill="none" stroke="#0095FF" stroke-width="3"/>
+            <line x1="42" y1="28" x2="128" y2="50" stroke="#ff6b6b" stroke-width="2"/>
+            <line x1="22" y1="158" x2="180" y2="158" stroke="#3a4a5e" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="badge ready">&#9889; Interactive sim</span>
+          <h3>E-Bike Door Lift</h3>
+          <p>Swing your e-bike from the ground to a vertical stow on the rear door. Winch-driven pivot-cantilever, 2:1 reeve. Drag the slider and watch it lift.</p>
+          <a class="cta-button" href="ebike-lift/">Open the simulator</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="thumb">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="180" fill="#070b14"/>
+            <line x1="78" y1="18" x2="78" y2="162" stroke="#9aa6b2" stroke-width="7"/>
+            <line x1="122" y1="18" x2="122" y2="162" stroke="#9aa6b2" stroke-width="7"/>
+            <line x1="78" y1="44" x2="122" y2="44" stroke="#0095FF" stroke-width="5"/>
+            <line x1="78" y1="74" x2="122" y2="74" stroke="#0095FF" stroke-width="5"/>
+            <line x1="78" y1="104" x2="122" y2="104" stroke="#0095FF" stroke-width="5"/>
+            <line x1="78" y1="134" x2="122" y2="134" stroke="#0095FF" stroke-width="5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="badge soon">Coming soon</span>
+          <h3>Rear Door Ladder</h3>
+          <p>Two-rail bolt-on ladder for the rear door. Five rungs, gusseted corners, sized for clean roof access. Cut list and drill template.</p>
+          <span class="cta-button disabled">Coming soon</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="thumb">
+          <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="180" fill="#070b14"/>
+            <circle cx="100" cy="42" r="11" fill="#ffcc00" opacity="0.55"/>
+            <rect x="32" y="66" width="136" height="52" rx="3" fill="none" stroke="#9aa6b2" stroke-width="5"/>
+            <line x1="66" y1="66" x2="66" y2="118" stroke="#0095FF" stroke-width="3"/>
+            <line x1="100" y1="66" x2="100" y2="118" stroke="#0095FF" stroke-width="3"/>
+            <line x1="134" y1="66" x2="134" y2="118" stroke="#0095FF" stroke-width="3"/>
+            <line x1="32" y1="92" x2="168" y2="92" stroke="#0095FF" stroke-width="3"/>
+            <line x1="48" y1="118" x2="48" y2="140" stroke="#2c3e50" stroke-width="5"/>
+            <line x1="152" y1="118" x2="152" y2="140" stroke="#2c3e50" stroke-width="5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="badge soon">Coming soon</span>
+          <h3>Solar Roof Rack</h3>
+          <p>Low-profile T-slot rack sized for an 840W layout. Flush mount, wind-aware geometry. Cut list and mounting plan.</p>
+          <span class="cta-button disabled">Coming soon</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="closing">
+    <h2>More kits on the way.</h2>
+    <p>New builds drop as I finish and ride-test them. Start with the lift.</p>
+    <a class="cta-button" style="display:inline-block;" href="ebike-lift/">&#9889; Open the lift simulator</a>
+  </section>
+
+  <footer>
+    Built and ridden in Sisters, Oregon.
+    <div class="links">
+      <a href="https://ebikeiq.app/">eBikeIQ</a> &middot;
+      <a href="https://ebikeiq.app/contact">Contact</a>
+    </div>
+    <div style="margin-top:14px;">&copy; 2026 Disruptive Business Solutions, LLC</div>
+  </footer>
+
+</body>
+</html>
